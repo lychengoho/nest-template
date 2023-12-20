@@ -1,4 +1,4 @@
-import { ClientOptions, GrpcService, Transport } from '@nestjs/microservices';
+import { ClientOptions, Transport } from '@nestjs/microservices';
 import { resolveServiceProtoPath } from '@utils/paths'
 
 export const testGrpcServiceOptions: ClientOptions = {

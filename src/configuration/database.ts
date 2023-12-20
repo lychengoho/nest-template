@@ -1,5 +1,6 @@
 import { TypeOrmModuleAsyncOptions } from '@nestjs/typeorm'
 import { ConfigModule, ConfigService } from '@nestjs/config'
+import { join } from 'node:path';
 
 export const typeOrmModuleAsyncOptions: TypeOrmModuleAsyncOptions = {
   imports: [ConfigModule],
@@ -12,9 +13,9 @@ export const typeOrmModuleAsyncOptions: TypeOrmModuleAsyncOptions = {
       username: configService.get('DB_USER'),
       password: configService.get('DB_PWD'),
       database: configService.get('DB_NAME'),
-      synchronize: false,
-      logging: true,
-      entities: [__dirname + '/**/*.entity.ts'],
+      // synchronize: true, // 同步表结构
+      // logging: true,
+      entities: [join(__dirname, '..', '**', '*.entity.{ts,js}')],
       poolSize: 10,
       connectorPackage: 'mysql2',
       extra: {
